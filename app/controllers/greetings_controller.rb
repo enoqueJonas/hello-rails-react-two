@@ -6,8 +6,14 @@ class GreetingsController < ApplicationController
     @greetings = Greeting.all
   end
 
+  def random
+    @greeting = Greeting.order('RANDOM()').limit(1).first
+    render json: @greeting
+  end
   # GET /greetings/1 or /greetings/1.json
   def show
+    @greeting = set_greeting
+    render json: @greeting
   end
 
   # GET /greetings/new
@@ -60,7 +66,12 @@ class GreetingsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_greeting
-      @greeting = Greeting.find(params[:id])
+      @greeting = if params[:id] == 'random'
+                    Greeting.order('RANDOM()').first
+                  else
+                    Greeting.find(params[:id])
+                  end
+      @greeting
     end
 
     # Only allow a list of trusted parameters through.
