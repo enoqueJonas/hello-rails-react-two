@@ -23,7 +23,7 @@ default: &default
 
 development:
   <<: *default
-  database: hello_rails_react_development
+  database: hello_rails_react_development_2
   username: postgres
   password: richnigga
 
@@ -59,7 +59,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: hello_rails_react_test
+  database: hello_rails_react_test_2
   username: postgres
   password: richnigga
 
@@ -85,6 +85,6 @@ test:
 #
 production:
   <<: *default
-  database: hello_rails_react_production
-  username: blog_app
+  database: hello_rails_react_production_2
+  username: postgres
   password: <%= ENV["BLOG_APP_DATABASE_PASSWORD"] %>
