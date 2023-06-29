@@ -12,7 +12,7 @@ const Greeting = () => {
     if(data){
         return <h1>{data.message}</h1>
     }
-    <p>Nothing to show...</p>
+    <p>...</p>
 }
 
 export default Greeting;
